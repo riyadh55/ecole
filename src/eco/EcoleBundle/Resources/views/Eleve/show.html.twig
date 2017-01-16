@@ -1,0 +1,75 @@
+
+{% block body -%}
+    <h1>Eleve</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissance</th>
+                <td>{{ entity.datenaissance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ entity.genre }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ entity.tel }}</td>
+            </tr>
+            <tr>
+                <th>Nomtuteur</th>
+                <td>{{ entity.nomtuteur }}</td>
+            </tr>
+            <tr>
+                <th>Adressetuteur</th>
+                <td>{{ entity.adressetuteur }}</td>
+            </tr>
+            <tr>
+                <th>Teltuteur</th>
+                <td>{{ entity.teltuteur }}</td>
+            </tr>
+            <tr>
+                <th>Emailtuteur</th>
+                <td>{{ entity.emailtuteur }}</td>
+            </tr>
+            <tr>
+                <th>Professiontuteur</th>
+                <td>{{ entity.professiontuteur }}</td>
+            </tr>
+            <tr>
+                <th>Cintuteur</th>
+                <td>{{ entity.cintuteur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('eleve') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('eleve_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reglementetudiant</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Datereglement</th>
+                <td>{{ entity.dateReglement|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modereglement</th>
+                <td>{{ entity.modeReglement }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ entity.montant }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ entity.reference }}</td>
+            </tr>
+            <tr>
+                <th>Idetudiant</th>
+                <td>{{ entity.idEtudiant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reglementetudiant') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('reglementetudiant_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reglementetudiant list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datereglement</th>
+                <th>Modereglement</th>
+                <th>Montant</th>
+                <th>Reference</th>
+                <th>Idetudiant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('reglementetudiant_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.dateReglement %}{{ entity.dateReglement|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.modeReglement }}</td>
+                <td>{{ entity.montant }}</td>
+                <td>{{ entity.reference }}</td>
+                <td>{{ entity.idEtudiant }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('reglementetudiant_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('reglementetudiant_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('reglementetudiant_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

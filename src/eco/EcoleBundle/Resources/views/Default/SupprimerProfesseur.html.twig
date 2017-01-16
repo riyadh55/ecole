@@ -1,0 +1,30 @@
+{# empty Twig template #}
+{% block body %}
+    <h1>Gestion Professeur</h1>
+    <a href="{{path('addproff')}}">Add professor</a>
+    <form action="" method="post">
+        {{ form_widget(f)}}
+        <input type="submit">
+    </form>
+        <hr>
+        <h3>liste des Professeurs</h3>
+         <table border="1">
+        <thread>
+            <th>Id professeur</th><th>nom professeur</th><th>prenom professeur</th>
+            <th>date naissance</th><th>genre</th><th>specialité</th><th>taux horaire</th>
+        </thread>
+        {% for p in professeurs %}
+            <tr>
+                <td>{{p.id}}</td>
+                <td>{{p.nom}}</td>
+                <td>{{p.prenom}}</td>
+                <td>{{p.datenaissance|date('d/m/Y')}}</td>
+                <td>{{p.genre}}</td>
+                <td>{{p.specialite}}</td>
+                <td>{{p.tauxHoraire}}</td>
+                <td><a href="{{path('supp_proff',{'id':p.id }) }}">supprimer</a></td>
+                <td><a href="{{path('modifproff',{'id':p.id }) }}">modifier</a></td>
+            </tr>        
+            {%endfor%}   
+    </table>
+        {%endblock %}

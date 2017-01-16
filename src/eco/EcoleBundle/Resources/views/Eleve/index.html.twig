@@ -1,0 +1,76 @@
+
+{% extends '::base.html.twig' %}
+{% block body -%}
+    {{parent()}}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="page-header margin-none">
+                <h1 class="padding-none"> list eleves</h1>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">    
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Datenaissance</th>
+                                <th>Genre</th>
+                                <th>Adresse</th>
+                                <th>Tel</th>
+                                <th>Nomtuteur</th>
+                                <th>Adressetuteur</th>
+                                <th>Teltuteur</th>
+                                <th>Emailtuteur</th>
+                                <th>Professiontuteur</th>
+                                <th>Cintuteur</th>
+                                <th>image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td><a href="{{ path('eleve_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                    <td>{{ entity.nom }}</td>
+                                    <td>{{ entity.prenom }}</td>
+                                    <td>{% if entity.datenaissance %}{{ entity.datenaissance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ entity.genre }}</td>
+                                    <td>{{ entity.adresse }}</td>
+                                    <td>{{ entity.tel }}</td>
+                                    <td>{{ entity.nomtuteur }}</td>
+                                    <td>{{ entity.adressetuteur }}</td>
+                                    <td>{{ entity.teltuteur }}</td>
+                                    <td>{{ entity.emailtuteur }}</td>
+                                    <td>{{ entity.professiontuteur }}</td>
+                                    <td>{{ entity.cintuteur }}</td>
+                                    <td>
+                                        <a href="{{path('eleve_show',{'id':entity.id})}}">
+                                            <img src="{{asset('uploads/eleves/'~entity.path)}}" alt=""class="img-circle">
+                                        </a>
+                                    </td>
+                                    <td class="actions">
+
+                                        <a href="{{ path('eleve_show', { 'id': entity.id }) }}"
+                                           class="btn btn-sm btn-info ">Show</a>
+
+                                        <a href="{{ path('eleve_edit', { 'id': entity.id }) }}"
+                                           class="btn btn-sm btn-primary" >Edit</a>
+
+                                        <a href="{{ path('eleve_delete', { 'id': entity.id }) }}"
+                                           class="btn btn-sm btn-danger" >Delete</a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('eleve_new') }}">
+                                Create a new entry
+                            </a>
+                        </li>
+                    </ul>
+                {% endblock %}

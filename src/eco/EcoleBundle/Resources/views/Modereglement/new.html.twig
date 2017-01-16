@@ -1,0 +1,15 @@
+
+
+{% block body -%}
+    <h1>Modereglement creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('modereglement') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

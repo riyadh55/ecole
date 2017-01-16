@@ -1,0 +1,8 @@
+eco_ecole:
+    resource: "@ecoEcoleBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
